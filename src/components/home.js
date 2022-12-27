@@ -1,0 +1,1 @@
+// If auth is true, then the user is redirected to the dashboard. If auth is false, then the user is redirected to the login page.
