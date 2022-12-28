@@ -40,7 +40,7 @@ const  createDeadline = async (req, res) => {
         // console.log(err);
         res.status(400).json({error : err.message})
     }
-    res.json({mssg: "New Deadline"});
+    // res.json({mssg: "New Deadline"});
 }
 
 // delete a deadline
@@ -55,7 +55,7 @@ const deleteDeadline = async (req, res) => {
     if(!deadline) {
         return res.status(404).json({error : "Deadline not found"});
     }
-    res.status(200).json({mssg : "Deadline deleted successfully"});
+    res.status(200).json(deadline);
 }
 
 
