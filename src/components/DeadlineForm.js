@@ -14,7 +14,7 @@ const DeadlineForm = () => {
     e.preventDefault();
     const newDeadline = { title, deadline, difficulty, progress };
     if(!user){
-      setError("You must be logged in to add a deadline")
+      // setError("You must be logged in to add a deadline")
       return;
     }
     const res = await fetch("/api/deadlines", {

@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 
 // get all deadlines
 const getAllDeadlines = async (req, res) => {
-    const workouts = await Deadline.find({}).sort({createdAt: -1});
+    const user_id = req.user._id;
+
+    const workouts = await Deadline.find({user_id}).sort({createdAt: -1});
     res.status(200).json(workouts);
 }
 
@@ -33,7 +35,8 @@ const  createDeadline = async (req, res) => {
     const {title, deadline, difficulty, progress} = req.body;
 
     try {
-        const newDeadline = await Deadline.create({title, deadline, difficulty, progress});
+        const user_id = req.user._id;
+        const newDeadline = await Deadline.create({title, deadline, difficulty, progress, user_id});
         res.status(200).json(newDeadline);
     }
     catch (err) {

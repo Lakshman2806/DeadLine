@@ -18,7 +18,12 @@ const deadlineSchema = new Schema({
     progress : {
         type: Number,
         required : true
+    },
+    user_id : {
+        type: String,
+        required : true
     }
+
 },{timestamps: true});    // this will automatically add the createdAt and the updatedAt field for us
 
 
