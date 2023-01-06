@@ -9,6 +9,11 @@ const {
   updateDeadline
 } = require("../controllers/deadlineController");
 
+const requireAuth = require("../middleware/requireAuth");
+
+// middleware to check if user is logged in
+router.use(requireAuth);
+
 // get all deadlines
 router.get("/", getAllDeadlines);
 

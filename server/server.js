@@ -5,7 +5,7 @@ require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
 const DeadRouter = require("./routes/deadline");
-
+const userRouter = require("./routes/user");
 // middleware
 
 app.use(express.json());
@@ -30,3 +30,5 @@ mongoose
 
 // routes
 app.use("/api/deadlines", DeadRouter);
+app.use("/api/user", userRouter);
+
