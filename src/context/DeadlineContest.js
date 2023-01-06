@@ -16,6 +16,10 @@ export const reducer = (state, action) => {
             return {
                 deadlines: state.deadlines.filter((deadline) => deadline._id !== action.payload._id)
             };
+        case "UPDATE_DEADLINE":
+            return {
+                deadlines: state.deadlines.map((deadline) => deadline._id === action.payload._id ? action.payload : deadline)
+            };
         default:
             return state;
     }

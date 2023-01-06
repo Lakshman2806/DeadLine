@@ -74,7 +74,7 @@ const updateDeadline = async (req, res) => {
     if(!deadline) {
         return res.status(404).json({error : "Deadline not found"});
     }
-    res.status(200).json({mssg : "Deadline updated successfully"});
+    res.status(200).json(deadline);
 }
 
 

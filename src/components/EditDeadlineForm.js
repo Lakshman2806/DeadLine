@@ -34,7 +34,8 @@ const EditDeadlineForm = (editdeadline) => {
       setDifficulty("");
       setProgress("");
       console.log("new form submitted");
-    //   dispatch({ type: "ADD_DEADLINE", payload: data });
+      console.log("data", data);
+      dispatch({ type: "UPDATE_DEADLINE", payload: data });
     }
     console.log("works till now")
   };
