@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useDeadlinesContext } from "../hooks/useDeadlinesContext";
+import { useAuthContext } from "../hooks/useAuthcontext";
+
 const DeadlineForm = () => {
   const { dispatch } = useDeadlinesContext();
   const [title, setTitle] = useState("");
@@ -7,15 +9,19 @@ const DeadlineForm = () => {
   const [difficulty, setDifficulty] = useState("");
   const [progress, setProgress] = useState("");
   const [error, setError] = useState(null);
-
+  const { user } = useAuthContext();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newDeadline = { title, deadline, difficulty, progress };
-
+    if(!user){
+      setError("You must be logged in to add a deadline")
+      return;
+    }
     const res = await fetch("/api/deadlines", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify(newDeadline),
     });
