@@ -56,7 +56,7 @@ const DeadlineDetails = ({ deadline }) => {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Employee</Modal.Title>
+            {/* <Modal.Title>Edit Employee</Modal.Title> */}
           </Modal.Header>
           <Modal.Body>
             <EditDeadlineForm deadline={deadline} />

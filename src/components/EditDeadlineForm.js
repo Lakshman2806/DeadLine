@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useDeadlinesContext } from "../hooks/useDeadlinesContext";
-
+import { useAuthContext } from "../hooks/useAuthcontext";
 
 const EditDeadlineForm = (editdeadline) => {
   const { dispatch } = useDeadlinesContext();
-  const [title, setTitle] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [progress, setProgress] = useState("");
+  const [title, setTitle] = useState(editdeadline.deadline.title);
+  const [deadline, setDeadline] = useState(editdeadline.deadline.deadline);
+  const [difficulty, setDifficulty] = useState(editdeadline.deadline.difficulty);
+  const [progress, setProgress] = useState(editdeadline.deadline.progress);
   const [error, setError] = useState(null);
+
+  const { user } = useAuthContext();
     // console.log("editdeadline",editdeadline.deadline)
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ const EditDeadlineForm = (editdeadline) => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify(newDeadline),
     });
