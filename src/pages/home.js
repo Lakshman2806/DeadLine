@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDeadlinesContext } from "../hooks/useDeadlinesContext";
 import { useAuthContext } from "../hooks/useAuthcontext";
-
+import { useLogOut } from "../hooks/useLogOut";
 // Components
 import DeadlineDetails from "../components/DeadlineDetails";
 import DeadlineForm from "../components/DeadlineForm";
@@ -9,7 +9,7 @@ import DeadlineForm from "../components/DeadlineForm";
 const Home = () => {
   const { deadlines, dispatch } = useDeadlinesContext();
   const { user } = useAuthContext();
-
+  const { logout } = useLogOut();
   // const [deadlines, setDeadlines] = useState(null);
   useEffect(() => {
     const fetchDeadlines = async () => {
@@ -24,7 +24,10 @@ const Home = () => {
       if (res.ok) {
         // setDeadlines(data);
         dispatch({ type: "GET_DEADLINES", payload: data });
-      } else console.log(data.error);
+      } else{
+         console.log(data.error);
+         logout();
+      }
     };
     if (user) {
       fetchDeadlines();

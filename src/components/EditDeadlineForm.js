@@ -48,7 +48,6 @@ const EditDeadlineForm = (editdeadline) => {
 
   return (
     <form className="NewDeadline" onSubmit={handleSubmit}>
-      <h3>Edit Deadline </h3>
 
       <label>Deadline Title</label>
       <input

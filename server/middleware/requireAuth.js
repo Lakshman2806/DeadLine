@@ -21,6 +21,7 @@ const requireAuth = async (req, res, next) => {
     }
     catch(err){
         console.log(err)
+        // localStorage.removeItem("user");
         return res.status(401).send({ error: "Request not authorized" });
     }
 }

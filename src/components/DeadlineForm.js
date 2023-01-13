@@ -13,7 +13,7 @@ const DeadlineForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newDeadline = { title, deadline, difficulty, progress };
-    if(!user){
+    if (!user) {
       // setError("You must be logged in to add a deadline")
       return;
     }
@@ -35,11 +35,11 @@ const DeadlineForm = () => {
       setDifficulty("");
       setProgress("");
       console.log("new form submitted");
-      dispatch({ type: "ADD_DEADLINE", payload: data })
+      dispatch({ type: "ADD_DEADLINE", payload: data });
     }
   };
   var today = new Date();
-  var dd = String(today.getDate()+1).padStart(2, "0");
+  var dd = String(today.getDate() + 1).padStart(2, "0");
   var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   var yyyy = today.getFullYear();
 
@@ -69,6 +69,8 @@ const DeadlineForm = () => {
       <label>difficulty</label>
       <input
         type="number"
+        min="0"
+        max="10"
         onChange={(e) => setDifficulty(e.target.value)}
         value={difficulty}
         required
@@ -77,6 +79,8 @@ const DeadlineForm = () => {
       <label>progress</label>
       <input
         type="number"
+        min="0"
+        max="100"
         onChange={(e) => setProgress(e.target.value)}
         value={progress}
         required

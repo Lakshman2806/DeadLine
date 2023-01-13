@@ -1,6 +1,12 @@
 import { useDeadlinesContext } from "../hooks/useDeadlinesContext";
 import { useState } from "react";
-import { Modal, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import {
+  Modal,
+  Button,
+  OverlayTrigger,
+  Tooltip,
+  progress,
+} from "react-bootstrap";
 import { useAuthContext } from "../hooks/useAuthcontext";
 
 import EditDeadlineForm from "./EditDeadlineForm";
@@ -29,8 +35,6 @@ const DeadlineDetails = ({ deadline }) => {
       }
     };
 
-    
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -38,8 +42,9 @@ const DeadlineDetails = ({ deadline }) => {
       <div className="deadline-preview">
         <h4>{deadline.title}</h4>
         <p>{deadline.deadline}</p>
-        <p>{deadline.difficulty}</p>
-        <p>{deadline.progress}</p>
+        <h5 className="difficulty">Difficulty : {deadline.difficulty}</h5>
+        <h5 className="Prog">Progress : {deadline.progress} %</h5>
+
         <p>
           <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}>
             <button
@@ -56,7 +61,7 @@ const DeadlineDetails = ({ deadline }) => {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            {/* <Modal.Title>Edit Employee</Modal.Title> */}
+            <Modal.Title>Edit Deadline</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <EditDeadlineForm deadline={deadline} />
