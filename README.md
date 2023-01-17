@@ -1,13 +1,13 @@
 # Deadline Helper
 A basic mern app that was made while trying to learn MERN stack. Until now it just stores user specific deadlines and displays them. It also has a login and register page. U can also delete, edit, and add deadlines.
 ## Requirements and installation
-clone the repository or download it and first run n
+clone the repository or download it and first run 
 ```
 npm install
 ```
  and then cd into the server
 ```
-npm install 
+npm install
 ```
 
 ## Running the app
