@@ -8,8 +8,10 @@ import {
   progress,
 } from "react-bootstrap";
 import { useAuthContext } from "../hooks/useAuthcontext";
-
+import  Progressbar from "./progressbar";
 import EditDeadlineForm from "./EditDeadlineForm";
+import { formatDistanceToNow } from "date-fns";
+
 const DeadlineDetails = ({ deadline }) => {
   const { dispatch } = useDeadlinesContext();
   const { user } = useAuthContext();
@@ -41,10 +43,10 @@ const DeadlineDetails = ({ deadline }) => {
     return (
       <div className="deadline-preview">
         <h4>{deadline.title}</h4>
-        <p>{deadline.deadline}</p>
-        <h5 className="difficulty">Difficulty : {deadline.difficulty}</h5>
+        <h6 className="deadlinedate">{formatDistanceToNow(new Date(deadline.deadline),{ addSuffix:true})}</h6>
+        <h5>Difficulty : {deadline.difficulty}</h5>
         <h5 className="Prog">Progress : {deadline.progress} %</h5>
-
+        <Progressbar progress={deadline.progress} />
         <p>
           <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}>
             <button

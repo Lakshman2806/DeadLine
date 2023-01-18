@@ -85,7 +85,6 @@ const DeadlineForm = () => {
         value={progress}
         required
       />
-
       <button>Add Deadline</button>
     </form>
   );

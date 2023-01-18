@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { useDeadlinesContext } from "../hooks/useDeadlinesContext";
 import { useAuthContext } from "../hooks/useAuthcontext";
-
 const EditDeadlineForm = (editdeadline) => {
   const { dispatch } = useDeadlinesContext();
   const [title, setTitle] = useState(editdeadline.deadline.title);
   const [deadline, setDeadline] = useState(editdeadline.deadline.deadline);
-  const [difficulty, setDifficulty] = useState(editdeadline.deadline.difficulty);
+  const [difficulty, setDifficulty] = useState(
+    editdeadline.deadline.difficulty
+  );
   const [progress, setProgress] = useState(editdeadline.deadline.progress);
   const [error, setError] = useState(null);
 
   const { user } = useAuthContext();
-    // console.log("editdeadline",editdeadline.deadline)
+  // console.log("editdeadline",editdeadline.deadline)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newDeadline = { title, deadline, difficulty, progress };
@@ -37,7 +38,7 @@ const EditDeadlineForm = (editdeadline) => {
       console.log("data", data);
       dispatch({ type: "UPDATE_DEADLINE", payload: data });
     }
-    console.log("works till now")
+    console.log("works till now");
   };
   var today = new Date();
   var dd = String(today.getDate() + 1).padStart(2, "0");
@@ -48,7 +49,6 @@ const EditDeadlineForm = (editdeadline) => {
 
   return (
     <form className="NewDeadline" onSubmit={handleSubmit}>
-
       <label>Deadline Title</label>
       <input
         type="text"
@@ -74,8 +74,11 @@ const EditDeadlineForm = (editdeadline) => {
       <label>progress</label>
       <input
         type="number"
+        min="0"
+        max="100"
         onChange={(e) => setProgress(e.target.value)}
         value={progress}
+        required
       />
 
       <button>Add Deadline</button>
