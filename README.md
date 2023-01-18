@@ -37,3 +37,10 @@ npm start
 * add a calendar to display deadlines
 * show deadlines in order of their due date and progress made till now
 * add a progress bar for each deadline
+
+
+## BUGS 
+* After one edit the form gets cleared. and another edit after that breaks the deadline
+  Possible fixes:
+    1. make a global context for it, so it can be accessed through different files or something like that
+  2.Maybe just not clear the form and try to keep the contents intact (will try to do this)
