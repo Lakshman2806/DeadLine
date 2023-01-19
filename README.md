@@ -34,9 +34,9 @@ npm start
 
 ## TODO
 * improve the styling and UI
-* add a calendar to display deadlines
-* show deadlines in order of their due date and progress made till now
-* add a progress bar for each deadline
+* ~~add a calendar to display deadlines~~ Improve the CSS of the calendar
+* ~~show deadlines in order of their due date and progress made till now~~ Now shows the deadlines in order of (100 - progress)/days left. Would do a better algorithm later
+* ~~add a progress bar for each deadline~~ Did a custom one, for some reason the bootstrap one was not working
 
 
 ## BUGS 

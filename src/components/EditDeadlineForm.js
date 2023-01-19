@@ -30,10 +30,10 @@ const EditDeadlineForm = (editdeadline) => {
       setError(data.error);
     } else {
       setError(null);
-      setTitle("");
-      setDeadline("");
-      setDifficulty("");
-      setProgress("");
+      setTitle(newDeadline.title);
+      setDeadline(newDeadline.deadline);
+      setDifficulty(newDeadline.difficulty);
+      setProgress(newDeadline.progress);
       console.log("new form submitted");
       console.log("data", data);
       dispatch({ type: "UPDATE_DEADLINE", payload: data });

@@ -33,6 +33,28 @@ const Home = () => {
       fetchDeadlines();
     }
   }, [dispatch, user]);
+  const order = [];
+  if(deadlines){
+    deadlines.map((deadline) => {
+      var d1 = new Date();
+      var d2 = new Date(deadline.deadline);
+      var diff = d2.getTime() - d1.getTime();
+      var days = Math.ceil(diff / (1000 * 3600 * 24));
+      deadline.tobedone = (100-deadline.progress)/days;
+      console.log(deadline.tobedone)
+      order.push(deadline.deadline);
+    });
+    deadlines.sort((a, b) => {
+      if (a.tobedone > b.tobedone) {
+        return -1;
+      }
+      if (a.tobedone < b.tobedone){
+        return 1;
+      }
+      return -a.difficulty + b.difficulty;
+    });
+  }
+  
 
   return (
     <div>
