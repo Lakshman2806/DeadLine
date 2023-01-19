@@ -112,3 +112,11 @@ div.error {
 .deadlinedate{
   color: #e7195a;
 }
+
+.highlight {
+  color:rgb(0, 42, 255);
+}
+
+.Calender{
+  margin-left: 75%;
+}
